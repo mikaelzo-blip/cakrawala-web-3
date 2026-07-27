@@ -459,8 +459,8 @@ export const brandItems: BrandItem[] = [
     name: 'Renold',
     category: 'Rantai Transmisi',
     logoText: 'Renold',
-    logoPath: '/logo/brands/renold.png',
-    logoWidth: 130,
+    logoPath: '/logo/brands/renold.svg',
+    logoWidth: 160,
     logoHeight: 48,
   },
   {
