@@ -6,10 +6,10 @@ export const companyInfo: CompanyInfo = {
   legalName: 'CV Cakrawala Buana Lestari',
   shortName: 'CBL',
   address: 'Jl Papanggo 2C No. 38, Kel. Papanggo, Kec. Tanjung Priok, Jakarta Utara 14340',
-  phone: '02126063396',
+  phone: '(021) 2606-3396',
   phoneRaw: '02126063396',
-  whatsappNumber: '6285712342760',
-  whatsappFormatted: '0857-1234-2760',
+  whatsappNumber: '6285184549522',
+  whatsappFormatted: '0851-8454-9522',
   email: 'cvcakrawala.market@gmail.com', // TODO: ganti ke email domain sendiri begitu domain aktif
   serviceHours: '24 jam / 7 hari',
   seo: {
