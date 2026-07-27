@@ -414,8 +414,8 @@ export const brandItems: BrandItem[] = [
     name: 'SEW Eurodrive',
     category: 'Gearbox & Motor',
     logoText: 'SEW-Eurodrive',
-    logoPath: '/logo/brands/sew-eurodrive.png',
-    logoWidth: 120,
+    logoPath: '/logo/brands/sew-eurodrive.svg',
+    logoWidth: 160,
     logoHeight: 48,
   },
   {
@@ -423,8 +423,8 @@ export const brandItems: BrandItem[] = [
     name: 'Rexnord',
     category: 'Coupling & Transmisi',
     logoText: 'Rexnord',
-    logoPath: '/logo/brands/rexnord.png',
-    logoWidth: 155,
+    logoPath: '/logo/brands/rexnord.svg',
+    logoWidth: 160,
     logoHeight: 48,
   },
   {
