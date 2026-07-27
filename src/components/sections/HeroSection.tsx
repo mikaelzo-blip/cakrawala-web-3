@@ -42,17 +42,17 @@ export function HeroSection() {
           muted
           playsInline
           preload="metadata"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-90"
         >
           <source src="/video/hero-bg.mp4" type="video/mp4" />
         </video>
-        {/* Layer Overlay Putih Halus ("Agak Di Putihkan") dengan Glassmorphism */}
-        <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FD]/80 via-white/85 to-white" />
+        {/* Layer Overlay Putih Transparan (Video Jelas Terlihat & Teks Tetap Tajam) */}
+        <div className="absolute inset-0 bg-white/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FD]/30 via-white/45 to-white/90" />
       </div>
 
       {/* 2. Background Decorative Grid Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-30 z-1">
+      <div className="absolute inset-0 pointer-events-none opacity-20 z-1">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="hero-grid" width="45" height="45" patternUnits="userSpaceOnUse">
@@ -63,22 +63,22 @@ export function HeroSection() {
         </svg>
       </div>
 
-      {/* 3. Hero Content (Selalu Jelas & Terbaca di Atas Video Latar Putih) */}
+      {/* 3. Hero Content (Jelas, Tajam, & Kontras di Atas Video Latar) */}
       <Container className="relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           {/* Status Badge 24/7 */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0E6BA8]/30 text-[#0E6BA8] text-xs font-semibold mb-6 shadow-sm backdrop-blur-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0E6BA8]/30 text-[#0E6BA8] text-xs font-bold mb-6 shadow-sm backdrop-blur-xs">
             <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
             <span>Layanan Teknik &amp; Penanganan Darurat 24 Jam / 7 Hari</span>
           </div>
 
           {/* Heading Utama */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F2942] tracking-tight leading-[1.15] mb-6 drop-shadow-2xs">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0F2942] tracking-tight leading-[1.15] mb-6 drop-shadow-sm">
             Penyedia Jasa Teknik Terpadu &amp; Otomasi Fasilitas Industri
           </h1>
 
           {/* Subtitle Deskriptif */}
-          <p className="text-base sm:text-lg md:text-xl text-[#334155] font-medium leading-relaxed max-w-3xl mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-[#0F2942] font-semibold leading-relaxed max-w-3xl mb-8 drop-shadow-xs">
             Penanganan profesional kelistrikan &amp; panel kontrol, migrasi sistem PLC/HMI, alignment mekanikal presisi, pendingin HVAC VRF/Chiller, otomatisasi pompa, hingga pencahayaan khusus gedung dan rekreasi.
           </p>
 
@@ -91,7 +91,7 @@ export function HeroSection() {
               external
               variant="whatsapp"
               size="lg"
-              className="w-full sm:w-auto shadow-md"
+              className="w-full sm:w-auto shadow-md font-bold"
             >
               <DynamicIcon name="MessageSquare" size={20} />
               <span>Konsultasi WhatsApp Fast Response</span>
@@ -101,7 +101,7 @@ export function HeroSection() {
               href="#layanan"
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto bg-white/80 backdrop-blur-xs shadow-xs"
+              className="w-full sm:w-auto bg-white/90 backdrop-blur-xs shadow-xs font-bold"
             >
               <DynamicIcon name="Wrench" size={20} />
               <span>Jelajahi 6 Divisi Layanan</span>
@@ -109,7 +109,7 @@ export function HeroSection() {
           </div>
 
           {/* Grid Quick Highlights */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 w-full pt-8 border-t border-[#E2E8F0]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 w-full pt-8 border-t border-[#E2E8F0]/80">
             {[
               { label: 'Kelistrikan & Panel', icon: 'Zap' },
               { label: 'Otomasi & PLC', icon: 'Cpu' },
@@ -120,10 +120,10 @@ export function HeroSection() {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center p-3 rounded-xl bg-white/90 border border-[#E2E8F0] shadow-2xs hover:border-[#0E6BA8]/40 backdrop-blur-xs transition-all hover:-translate-y-0.5"
+                className="flex flex-col items-center p-3 rounded-xl bg-white/95 border border-[#E2E8F0] shadow-sm hover:border-[#0E6BA8]/50 backdrop-blur-xs transition-all hover:-translate-y-0.5"
               >
                 <DynamicIcon name={item.icon} size={22} className="text-[#0E6BA8] mb-1.5" />
-                <span className="text-xs font-semibold text-[#0F2942] text-center leading-tight">
+                <span className="text-xs font-bold text-[#0F2942] text-center leading-tight">
                   {item.label}
                 </span>
               </div>
