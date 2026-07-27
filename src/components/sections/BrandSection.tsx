@@ -17,13 +17,13 @@ export function BrandSection() {
 
       {/* 2. Full-Bleed Running Marquee Track (Di Luar Container, Edge-to-Edge) */}
       <div className="w-full overflow-hidden marquee-mask py-4 mb-8">
-        <div className="animate-marquee-track motion-reduce:flex-wrap motion-reduce:w-full motion-reduce:justify-center">
-          {/* Copy 1: Set Pertama (Aman untuk Screen Reader) */}
-          <div className="flex flex-nowrap shrink-0 motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:w-full">
+        <div className="animate-marquee-track">
+          {/* Copy 1: Set Pertama */}
+          <div className="flex flex-nowrap shrink-0">
             {brandItems.map((brand) => (
               <div
                 key={`b1-${brand.id}`}
-                className="inline-flex flex-col items-center justify-between w-[200px] h-[112px] p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-70 hover:opacity-100 transition-opacity card-hover-lift motion-reduce:mr-3 motion-reduce:mb-3"
+                className="inline-flex flex-col items-center justify-between w-[200px] h-[112px] p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-70 hover:opacity-100 transition-opacity card-hover-lift"
               >
                 {/* Logo Box / Wordmark Box Presisi (Max 120px x 28px) */}
                 <div className="w-[120px] h-[28px] flex items-center justify-center overflow-hidden">
@@ -33,7 +33,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 120}
                       height={brand.logoHeight || 28}
-                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125"
                     />
                   ) : (
                     <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
@@ -51,7 +51,7 @@ export function BrandSection() {
           </div>
 
           {/* Copy 2: Duplikasi Pertama untuk Seamless Loop (-50% seam) */}
-          <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
+          <div className="flex flex-nowrap shrink-0" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
                 key={`b2-${brand.id}`}
@@ -64,7 +64,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 120}
                       height={brand.logoHeight || 28}
-                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125"
                     />
                   ) : (
                     <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
@@ -81,7 +81,7 @@ export function BrandSection() {
           </div>
 
           {/* Copy 3: Duplikasi Kedua (Pelengkap 1440px+) */}
-          <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
+          <div className="flex flex-nowrap shrink-0" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
                 key={`b3-${brand.id}`}
@@ -94,7 +94,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 120}
                       height={brand.logoHeight || 28}
-                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125"
                     />
                   ) : (
                     <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
@@ -111,7 +111,7 @@ export function BrandSection() {
           </div>
 
           {/* Copy 4: Duplikasi Ketiga (Seam 4-Unit) */}
-          <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
+          <div className="flex flex-nowrap shrink-0" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
                 key={`b4-${brand.id}`}
@@ -124,7 +124,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 120}
                       height={brand.logoHeight || 28}
-                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125"
                     />
                   ) : (
                     <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
