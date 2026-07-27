@@ -16,12 +16,21 @@ export interface CompanyInfo {
   };
 }
 
+export interface CapabilityDetail {
+  label: string;
+  description: string;
+}
+
 export interface ServiceDivision {
   id: string;
+  slug: string;
   title: string;
   description: string;
+  longDescription: string;
   iconName: string;
   capabilities: string[];
+  capabilityDetails: CapabilityDetail[];
+  commonConditions: string[];
 }
 
 export interface ExpertiseItem {

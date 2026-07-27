@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/projects';
-import { companyInfo } from '@/data/company';
+import { companyInfo, serviceDivisions } from '@/data/company';
 import { Container } from '@/components/ui/Container';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
@@ -50,6 +50,9 @@ export default async function CaseStudyDetailPage({ params }: Props) {
   if (!project) {
     notFound();
   }
+
+  // Cari divisi layanan terkait untuk tautan silang dua arah
+  const matchedService = serviceDivisions.find((s) => s.id === project.category);
 
   const relatedProjects = projects
     .filter((p) => p.slug !== project.slug)
@@ -101,7 +104,15 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           {/* Case Study Header */}
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2E8F0] shadow-sm mb-8">
             <div className="flex flex-wrap items-center gap-2.5 mb-4">
-              <Badge variant="primary">{project.categoryLabel}</Badge>
+              {matchedService ? (
+                <Link href={`/layanan/${matchedService.slug}`}>
+                  <Badge variant="primary" className="hover:bg-[#0E6BA8] hover:text-white transition-colors cursor-pointer">
+                    {project.categoryLabel} &rarr;
+                  </Badge>
+                </Link>
+              ) : (
+                <Badge variant="primary">{project.categoryLabel}</Badge>
+              )}
               <Badge variant="ghost" className="bg-[#F8FAFC] border border-[#E2E8F0]">
                 {project.sector}
               </Badge>
@@ -195,6 +206,28 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
             {/* Sisi Kanan: Sidebar Lingkup, Komponen & CTA */}
             <div className="lg:col-span-4 space-y-6">
+              {/* Tautan Silang ke Divisi Layanan */}
+              {matchedService && (
+                <div className="bg-[#F0F7FD] rounded-2xl p-5 border border-[#0E6BA8]/20 shadow-2xs">
+                  <span className="text-xs font-bold text-[#0E6BA8] uppercase tracking-wider block mb-1">
+                    Divisi Layanan Terkait:
+                  </span>
+                  <h4 className="font-bold text-[#0F2942] text-base mb-2">
+                    {matchedService.title}
+                  </h4>
+                  <p className="text-xs text-[#475569] mb-4 leading-relaxed">
+                    {matchedService.description}
+                  </p>
+                  <Link
+                    href={`/layanan/${matchedService.slug}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0E6BA8] hover:underline"
+                  >
+                    <span>Lihat Selengkapnya Halaman Layanan {matchedService.title}</span>
+                    <DynamicIcon name="ArrowRight" size={14} />
+                  </Link>
+                </div>
+              )}
+
               {/* Sidebar 1: Lingkup Penanganan */}
               <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm">
                 <h3 className="text-base font-bold text-[#0F2942] mb-4 pb-2 border-b border-[#E2E8F0] flex items-center gap-2">
