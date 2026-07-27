@@ -481,6 +481,33 @@ export const brandItems: BrandItem[] = [
     logoWidth: 150,
     logoHeight: 48,
   },
+  {
+    id: 'in-lite',
+    name: 'in-Lite',
+    category: 'Pencahayaan LED',
+    logoText: 'in-Lite',
+    logoPath: '/logo/brands/in-lite.svg',
+    logoWidth: 150,
+    logoHeight: 48,
+  },
+  {
+    id: 'orphek',
+    name: 'Orphek',
+    category: 'Pencahayaan Khusus & LED',
+    logoText: 'Orphek',
+    logoPath: '/logo/brands/orphek.svg',
+    logoWidth: 160,
+    logoHeight: 48,
+  },
+  {
+    id: 'philips',
+    name: 'Philips',
+    category: 'Pencahayaan & Armatur',
+    logoText: 'Philips',
+    logoPath: '/logo/brands/philips.svg',
+    logoWidth: 160,
+    logoHeight: 48,
+  },
 ];
 
 export const brandDisclaimer = 
