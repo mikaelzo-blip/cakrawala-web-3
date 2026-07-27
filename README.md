@@ -126,3 +126,4 @@ Seluruh data portofolio tersimpan di `src/data/projects.ts`. Untuk menambah proy
 - [ ] **Verifikasi Dokumen PO/BAST**: Cocokkan seluruh 9 entri draf di `src/data/projects.ts` dengan Surat Pesanan / Berita Acara Serah Terima fisik. Hapus entri yang tidak memiliki bukti fisik.
 - [ ] **Dokumentasi Foto Lapangan Asli**: Ganti file gambar placeholder di `public/images/projects/` dengan foto hasil pengerjaan tim teknis CBL di lokasi.
 - [ ] **Peninjauan Sertifikasi / Izin Legal**: Tambahkan dokumen pendukung legalitas jika diperlukan saat go-live.
+# cakrawala-web-3
