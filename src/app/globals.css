@@ -84,7 +84,7 @@
   display: flex !important;
   flex-wrap: nowrap !important;
   width: max-content !important;
-  animation: marquee-scroll 25s linear infinite !important;
+  animation: marquee-scroll 55s linear infinite !important;
   will-change: transform;
 }
 
