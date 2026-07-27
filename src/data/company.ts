@@ -391,10 +391,34 @@ export const workProcessSteps: WorkProcessStep[] = [
 ];
 
 export const brandItems: BrandItem[] = [
-  { id: 'allen-bradley', name: 'Allen-Bradley', category: 'Otomasi & PLC', logoText: 'Allen-Bradley' },
+  {
+    id: 'allen-bradley',
+    name: 'Allen-Bradley',
+    category: 'Otomasi & PLC',
+    logoText: 'Allen-Bradley',
+    logoPath: '/logo/brands/allen-bradley.svg',
+    logoWidth: 120,
+    logoHeight: 28,
+  },
   { id: 'schneider', name: 'Schneider Electric', category: 'Kelistrikan & Kontrol', logoText: 'Schneider' },
-  { id: 'sew-eurodrive', name: 'SEW Eurodrive', category: 'Gearbox & Motor', logoText: 'SEW-Eurodrive' },
-  { id: 'rexnord', name: 'Rexnord', category: 'Coupling & Transmisi', logoText: 'Rexnord' },
+  {
+    id: 'sew-eurodrive',
+    name: 'SEW Eurodrive',
+    category: 'Gearbox & Motor',
+    logoText: 'SEW-Eurodrive',
+    logoPath: '/logo/brands/sew-eurodrive.png',
+    logoWidth: 80,
+    logoHeight: 28,
+  },
+  {
+    id: 'rexnord',
+    name: 'Rexnord',
+    category: 'Coupling & Transmisi',
+    logoText: 'Rexnord',
+    logoPath: '/logo/brands/rexnord.svg',
+    logoWidth: 120,
+    logoHeight: 28,
+  },
   { id: 'skf', name: 'SKF', category: 'Bearing Presisi', logoText: 'SKF' },
   { id: 'timken', name: 'Timken', category: 'Bearing Industri', logoText: 'Timken' },
   { id: 'grundfos', name: 'Grundfos', category: 'Pompa & Perairan', logoText: 'Grundfos' },
