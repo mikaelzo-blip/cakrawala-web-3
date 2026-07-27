@@ -70,6 +70,25 @@
   top: 1rem;
 }
 
+/* CSS Running Marquee Animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-track {
+  animation: marquee-scroll var(--marquee-duration, 70s) linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
 /* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -85,5 +104,15 @@
 
   .card-hover-lift:hover {
     transform: none;
+  }
+
+  .animate-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .marquee-mask {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
   }
 }
