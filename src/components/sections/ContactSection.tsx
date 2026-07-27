@@ -48,7 +48,7 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#25D366] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#F97316] flex items-center justify-center shrink-0">
                     <DynamicIcon name="MessageSquare" size={20} />
                   </div>
                   <div>
@@ -57,7 +57,7 @@ export function ContactSection() {
                       href={`https://wa.me/${companyInfo.whatsappNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-bold text-[#25D366] hover:underline mt-1 block"
+                      className="text-sm font-bold text-[#F97316] hover:underline mt-1 block"
                     >
                       {companyInfo.whatsappFormatted} (Siaga 24 Jam)
                     </a>

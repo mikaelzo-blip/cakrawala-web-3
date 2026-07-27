@@ -102,9 +102,9 @@ export function Footer() {
                   href={`https://wa.me/${companyInfo.whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-[#E2E8F0] hover:text-[#25D366] transition-colors"
+                  className="flex items-center gap-3 text-[#E2E8F0] hover:text-[#F97316] transition-colors"
                 >
-                  <DynamicIcon name="MessageSquare" size={18} className="text-[#25D366] shrink-0" />
+                  <DynamicIcon name="MessageSquare" size={18} className="text-[#F97316] shrink-0" />
                   <span>WhatsApp: {companyInfo.whatsappFormatted}</span>
                 </a>
               </li>

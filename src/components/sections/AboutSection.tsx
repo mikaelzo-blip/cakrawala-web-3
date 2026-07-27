@@ -85,7 +85,7 @@ export function AboutSection() {
               </dl>
 
               <div className="mt-6 pt-4 border-t border-[#15426B] text-xs text-[#E2E8F0]/70 flex items-center gap-2">
-                <DynamicIcon name="CheckCircle2" size={16} className="text-[#25D366]" />
+                <DynamicIcon name="CheckCircle2" size={16} className="text-[#F97316]" />
                 <span>Siap menerima panggilan survei teknis di lokasi.</span>
               </div>
             </div>

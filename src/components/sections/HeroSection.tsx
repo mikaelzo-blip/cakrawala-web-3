@@ -68,7 +68,7 @@ export function HeroSection() {
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           {/* Status Badge 24/7 */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0E6BA8]/30 text-[#0E6BA8] text-xs font-bold mb-6 shadow-sm backdrop-blur-xs">
-            <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
             <span>Layanan Teknik &amp; Penanganan Darurat 24 Jam / 7 Hari</span>
           </div>
 

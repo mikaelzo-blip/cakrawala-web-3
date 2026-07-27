@@ -14,7 +14,7 @@ export function FloatingWhatsapp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Chat WhatsApp Siaga 24 Jam (${companyInfo.whatsappFormatted})`}
-      className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 bg-[#25D366] text-white font-bold text-sm rounded-full shadow-2xl hover:bg-[#20ba5a] hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[#25D366] group"
+      className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 px-4 py-3 bg-[#F97316] text-white font-bold text-sm rounded-full shadow-2xl hover:bg-[#EA580C] hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[#F97316] group"
     >
       <span className="relative flex h-3 w-3">
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
