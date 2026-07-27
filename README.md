@@ -1,6 +1,6 @@
-# CV Cakrawala Buana Lestari (CBL) — Situs Web Perusahaan
+# CV Cakrawala Buana Lestari (CBL) — Situs Web Perusahaan (B2B)
 
-Situs company profile B2B resmi untuk **CV Cakrawala Buana Lestari (CBL)**, penyedia jasa teknik terpadu: kelistrikan, otomatisasi PLC/HMI, mekanikal presisi, HVAC refrigerasi, sistem pompa, dan pencahayaan khusus.
+Situs company profile B2B resmi untuk **CV Cakrawala Buana Lestari (CBL)**, penyedia jasa teknik terpadu: kelistrikan & panel kontrol, otomatisasi PLC/HMI, mekanikal presisi, HVAC refrigerasi, sistem pompa, dan pencahayaan khusus.
 
 ---
 
@@ -8,13 +8,13 @@ Situs company profile B2B resmi untuk **CV Cakrawala Buana Lestari (CBL)**, peny
 
 - **Framework**: Next.js (App Router, TypeScript mode `strict`)
 - **UI & Styling**: React 19, Tailwind CSS v4 (`@theme` directive), `lucide-react`, `clsx` + `tailwind-merge`
-- **Deployment**: Static Site Generation (SSG / Static Export target)
+- **Deployment Target**: Static Site Generation (SSG / Static Export target)
 
 ---
 
 ## Panduan Memulai (Quick Start)
 
-### 1. Prasyarat System
+### 1. Prasyarat Sistem
 - Node.js versi 18+ atau 20+
 - npm v9+
 
@@ -43,7 +43,7 @@ npm run build
 
 ---
 
-## Peta Struktur Folder
+## Peta Struktur Berkas
 
 ```
 src/
@@ -55,6 +55,13 @@ src/
     robots.ts             # Directives crawler & sitemap pointer
     manifest.ts           # Web App Manifest
     not-found.tsx         # Halaman 404
+    legalitas/
+      page.tsx            # Halaman legalitas perusahaan & prosedur K3
+    kebijakan-privasi/
+      page.tsx            # Halaman kebijakan privasi data
+    layanan/
+      [slug]/
+        page.tsx          # Detail divisi layanan (statically generated via generateStaticParams)
     proyek/
       page.tsx            # Indeks portofolio interaktif dengan filter kategori client-side
       [slug]/
@@ -62,17 +69,20 @@ src/
   components/
     layout/               # Header, Footer, MobileMenu
     sections/             # Modular homepage sections
-    cards/                # ServiceCard, ProcessCard, ProjectCard
-    forms/                # ContactForm (validasi client & WhatsApp deep-link)
+    cards/                # ServiceCard (link ke /layanan/[slug]), ProcessCard, ProjectCard
+    forms/                # ContactForm (dual submit: WhatsApp & Mailto)
     ui/                   # Container, Button, SectionHeading, DynamicIcon, Badge, FloatingWhatsapp, BackToTop
   data/
     company.ts            # Seluruh konten naratif legal & kontak perusahaan
-    projects.ts           # Dataset 9 entri studi kasus portofolio
+    projects.ts           # Dataset 9 entri studi kasus portofolio (dengan header draf wajib)
+    legal.ts              # Data legalitas, prosedur K3, dokumen vendor, kualifikasi teknisi
   types/
     company.ts            # Interfaces data perusahaan & komponen UI
-    project.ts            # Interface data proyek & kategori
+    project.ts            # Interfaces data proyek & kategori
+    legal.ts              # Interfaces data legalitas & K3
   lib/
     utils.ts              # Class merging (cn) & resolveSectionHref helper
+    message.ts            # Shared message builder (WA + Mailto dengan penjejakan Halaman: <pathname>)
     whatsapp.ts           # Generator URL WhatsApp deep-link
     validation.ts         # Validasi formulir kontak
 ```
@@ -123,7 +133,7 @@ Seluruh data portofolio tersimpan di `src/data/projects.ts`. Untuk menambah proy
 ## Daftar TODO Sebelum Go-Live Publik
 
 - [ ] **Konfirmasi Domain Resmi**: Update variabel `seo.siteUrl` di `src/data/company.ts` jika domain publik resmi sudah dibeli.
+- [ ] **Konfirmasi Email Domain Resmi**: Update variabel `companyInfo.email` dari Gmail ke email domain (mis. `marketing@<domain>`).
 - [ ] **Verifikasi Dokumen PO/BAST**: Cocokkan seluruh 9 entri draf di `src/data/projects.ts` dengan Surat Pesanan / Berita Acara Serah Terima fisik. Hapus entri yang tidak memiliki bukti fisik.
 - [ ] **Dokumentasi Foto Lapangan Asli**: Ganti file gambar placeholder di `public/images/projects/` dengan foto hasil pengerjaan tim teknis CBL di lokasi.
-- [ ] **Peninjauan Sertifikasi / Izin Legal**: Tambahkan dokumen pendukung legalitas jika diperlukan saat go-live.
-# cakrawala-web-3
+- [ ] **Company Profile PDF**: Masukkan file `company-profile.pdf` resmi ke folder `public/documents/` dan aktifkan flag `available: true` di `src/data/legal.ts`.
