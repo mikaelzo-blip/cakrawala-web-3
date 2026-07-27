@@ -402,7 +402,7 @@ export const brandItems: BrandItem[] = [
 ];
 
 export const brandDisclaimer = 
-  'Merek dan logo yang tercantum adalah milik dari masing-masing pemegang hak cipta. Ditampilkan semata-mata untuk menjelaskan cakupan spesifikasi suku cadang dan komponen teknis yang biasa ditangani oleh tim CBL. CV Cakrawala Buana Lestari bukan merupakan distributor resmi atau authorized partner dari merek-merek tersebut.';
+  'Merek dan logo yang tercantum adalah milik dari masing-masing pemegang hak merek. Ditampilkan semata-mata untuk menjelaskan cakupan spesifikasi suku cadang dan komponen teknis yang biasa ditangani oleh tim CBL. CV Cakrawala Buana Lestari bukan merupakan distributor resmi atau authorized partner dari merek-merek tersebut.';
 
 export const portfolioConfidentialityNotice = 
   'Demi menjaga kerahasiaan dan privasi operasional mitra, nama spesifik perusahaan dan lokasi rinci tidak dipublikasikan. Studi kasus di atas menyajikan gambaran teknis objektif dari proyek penanganan yang telah direalisasikan oleh CBL.';

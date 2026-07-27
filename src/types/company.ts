@@ -52,6 +52,9 @@ export interface BrandItem {
   name: string;
   category: string;
   logoText: string;
+  logoPath?: string;
+  logoWidth?: number;
+  logoHeight?: number;
 }
 
 export interface WhyUsPoint {
