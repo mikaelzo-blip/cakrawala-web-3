@@ -486,7 +486,7 @@ export const brandItems: BrandItem[] = [
     name: 'in-Lite',
     category: 'Pencahayaan LED',
     logoText: 'in-Lite',
-    logoPath: '/logo/brands/in-lite.svg',
+    logoPath: '/logo/brands/in-lite.png',
     logoWidth: 150,
     logoHeight: 48,
   },
