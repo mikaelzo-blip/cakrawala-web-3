@@ -67,7 +67,7 @@ export function Footer() {
               {serviceDivisions.map((service) => (
                 <li key={service.id}>
                   <Link
-                    href={resolveSectionHref('#layanan', pathname)}
+                    href={`/layanan/${service.slug}`}
                     className="text-[#E2E8F0] hover:text-[#00A8CC] transition-colors inline-flex items-center gap-1.5"
                   >
                     <DynamicIcon name="ChevronRight" size={14} className="text-[#0E6BA8]" />
@@ -78,12 +78,12 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Kolom 4: Kontak Legal */}
+          {/* Kolom 4: Kontak Legal & Dokumen */}
           <div>
             <h3 className="text-base font-bold text-white mb-4 tracking-wide border-b border-[#15426B] pb-2">
-              Kontak Resmi
+              Kontak &amp; Legalitas
             </h3>
-            <ul className="space-y-3.5 text-sm">
+            <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3 text-[#E2E8F0]">
                 <DynamicIcon name="MapPin" size={18} className="text-[#00A8CC] shrink-0 mt-0.5" />
                 <span>{companyInfo.address}</span>
@@ -131,7 +131,13 @@ export function Footer() {
               &copy; {currentYear} {companyInfo.legalName}. Seluruh Hak Cipta Dilindungi Undang-Undang.
             </p>
             <div className="flex items-center gap-4 text-xs">
-              <span className="text-[#E2E8F0]/50">Jakarta Utara, Indonesia</span>
+              <Link href="/legalitas" className="hover:text-[#00A8CC] underline">
+                Legalitas &amp; Dokumen Vendor
+              </Link>
+              <span className="text-[#15426B]">•</span>
+              <Link href="/kebijakan-privasi" className="hover:text-[#00A8CC] underline">
+                Kebijakan Privasi
+              </Link>
             </div>
           </div>
         </div>

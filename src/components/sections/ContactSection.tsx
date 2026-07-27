@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { companyInfo } from '@/data/company';
@@ -68,7 +69,7 @@ export function ContactSection() {
                     <DynamicIcon name="Mail" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Email Korespondensi:</h4>
+                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Email Korespondensi (RFQ):</h4>
                     <a href={`mailto:${companyInfo.email}`} className="text-sm font-medium text-[#0E6BA8] hover:underline mt-1 block">
                       {companyInfo.email}
                     </a>
@@ -86,13 +87,13 @@ export function ContactSection() {
                 </div>
               </div>
 
-              {/* Map Link Box */}
-              <div className="pt-4 border-t border-[#E2E8F0]">
+              {/* Tautan Legalitas & Maps */}
+              <div className="pt-4 border-t border-[#E2E8F0] space-y-2">
                 <a
                   href={`https://maps.google.com/?q=${encodeURIComponent(companyInfo.address)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#0E6BA8] text-xs font-semibold text-[#0E6BA8] transition-colors"
+                  className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] hover:border-[#0E6BA8] text-xs font-semibold text-[#0E6BA8] transition-colors"
                 >
                   <span className="flex items-center gap-2">
                     <DynamicIcon name="MapPin" size={16} />
@@ -100,11 +101,22 @@ export function ContactSection() {
                   </span>
                   <DynamicIcon name="ExternalLink" size={14} />
                 </a>
+
+                <Link
+                  href="/legalitas"
+                  className="flex items-center justify-between p-3 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20 hover:bg-[#0E6BA8] hover:text-white text-xs font-semibold text-[#0E6BA8] transition-all group"
+                >
+                  <span className="flex items-center gap-2">
+                    <DynamicIcon name="FileCheck" size={16} />
+                    <span>Kebutuhan Registrasi Vendor &amp; Legalitas</span>
+                  </span>
+                  <DynamicIcon name="ArrowRight" size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* Kolom Kanan: Formulir Konsultasi */}
+          {/* Kolom Kanan: Formulir Konsultasi (WA + Mailto) */}
           <div className="lg:col-span-7">
             <ContactForm />
           </div>

@@ -1,13 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { serviceDivisions } from '@/data/company';
 import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { validateContactForm, type ContactFormData, type ContactFormErrors } from '@/lib/validation';
-import { buildWhatsappUrl } from '@/lib/whatsapp';
+import { buildWhatsappUrl, buildMailtoUrl } from '@/lib/message';
 
 export function ContactForm() {
+  const pathname = usePathname();
+
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     company: '',
@@ -42,7 +46,7 @@ export function ContactForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleWhatsappSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -51,8 +55,7 @@ export function ContactForm() {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       setIsSubmitting(false);
-      
-      // Focus first errored field
+
       const firstErrorKey = Object.keys(validationErrors)[0];
       const errorElement = document.getElementById(firstErrorKey);
       errorElement?.focus();
@@ -60,16 +63,36 @@ export function ContactForm() {
     }
 
     setErrors({});
-    
-    // Build WhatsApp URL and open in new tab
-    const waUrl = buildWhatsappUrl(formData);
+    const waUrl = buildWhatsappUrl(formData, pathname);
     window.open(waUrl, '_blank', 'noopener,noreferrer');
+    setIsSubmitting(false);
+  };
+
+  const handleMailtoSubmit = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const validationErrors = validateContactForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setIsSubmitting(false);
+
+      const firstErrorKey = Object.keys(validationErrors)[0];
+      const errorElement = document.getElementById(firstErrorKey);
+      errorElement?.focus();
+      return;
+    }
+
+    setErrors({});
+    const mailtoUrl = buildMailtoUrl(formData, pathname);
+    window.location.href = mailtoUrl;
     setIsSubmitting(false);
   };
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleWhatsappSubmit}
       className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-5"
       noValidate
       aria-label="Formulir Konsultasi Teknik"
@@ -79,7 +102,7 @@ export function ContactForm() {
           Formulir Konsultasi &amp; Permintaan Survei
         </h3>
         <p className="text-xs text-[#475569] mt-1">
-          Isi rincian di bawah ini. Pesan terstruktur akan dikirimkan langsung ke WhatsApp tim teknis CBL.
+          Isi rincian di bawah ini. Pilih pengiriman pesan langsung via WhatsApp atau Email RFQ.
         </p>
       </div>
 
@@ -185,7 +208,7 @@ export function ContactForm() {
         {/* Email (Opsional) */}
         <div>
           <label htmlFor="email" className="block text-xs font-bold text-[#0F2942] mb-1">
-            Email <span className="text-[#475569] font-normal">(Opsional)</span>
+            Email <span className="text-[#475569] font-normal">(Opsional - Untuk RFQ)</span>
           </label>
           <input
             type="email"
@@ -295,7 +318,7 @@ export function ContactForm() {
             className="mt-1 w-4 h-4 text-[#0E6BA8] border-[#E2E8F0] rounded focus:ring-[#0E6BA8]"
           />
           <span className="text-xs text-[#475569] leading-tight">
-            Saya menyetujui bahwa data informasi teknis yang dikirimkan digunakan semata-mata untuk keperluan komunikasi konsultasi proyek dengan tim CV Cakrawala Buana Lestari. <span className="text-red-500">*</span>
+            Saya menyetujui bahwa data informasi teknis yang dikirimkan digunakan semata-mata untuk komunikasi konsultasi proyek dengan tim CV Cakrawala Buana Lestari (baca <Link href="/kebijakan-privasi" className="text-[#0E6BA8] underline font-semibold">Kebijakan Privasi</Link>). <span className="text-red-500">*</span>
           </span>
         </label>
         {errors.agreedToTerms && (
@@ -305,17 +328,31 @@ export function ContactForm() {
         )}
       </div>
 
-      {/* Submit Button */}
-      <Button
-        type="submit"
-        variant="whatsapp"
-        size="lg"
-        fullWidth
-        disabled={isSubmitting}
-      >
-        <DynamicIcon name="MessageSquare" size={20} />
-        <span>Kirim Pesan ke WhatsApp Tim CBL</span>
-      </Button>
+      {/* Action Buttons: WhatsApp & Mailto */}
+      <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+        <Button
+          type="submit"
+          variant="whatsapp"
+          size="lg"
+          className="w-full sm:flex-1"
+          disabled={isSubmitting}
+        >
+          <DynamicIcon name="MessageSquare" size={20} />
+          <span>Kirim ke WhatsApp Tim CBL</span>
+        </Button>
+
+        <Button
+          type="button"
+          onClick={handleMailtoSubmit}
+          variant="secondary"
+          size="lg"
+          className="w-full sm:w-auto"
+          disabled={isSubmitting}
+        >
+          <DynamicIcon name="Mail" size={20} />
+          <span>Kirim via Email (RFQ)</span>
+        </Button>
+      </div>
     </form>
   );
 }
