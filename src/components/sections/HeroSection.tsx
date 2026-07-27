@@ -1,39 +1,84 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useRef } from 'react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { companyInfo } from '@/data/company';
 
 export function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Pause video when out of viewport to save battery & performance
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative pt-12 pb-16 md:pt-20 md:pb-28 bg-gradient-to-b from-[#F0F7FD]/70 via-white to-white overflow-hidden border-b border-[#E2E8F0]">
-      {/* Background Decorative SVG Lines */}
-      <div className="absolute inset-0 pointer-events-none opacity-40">
+    <section className="relative pt-12 pb-16 md:pt-20 md:pb-28 overflow-hidden border-b border-[#E2E8F0] bg-white">
+      {/* 1. Background Video Layer (Pixabay Robot Machine Work Video) */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          className="w-full h-full object-cover"
+        >
+          <source src="/video/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Layer Overlay Putih Halus ("Agak Di Putihkan") dengan Glassmorphism */}
+        <div className="absolute inset-0 bg-white/85 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FD]/80 via-white/85 to-white" />
+      </div>
+
+      {/* 2. Background Decorative Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-30 z-1">
         <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="hero-grid" width="45" height="45" patternUnits="userSpaceOnUse">
-              <path d="M 45 0 L 0 0 0 45" fill="none" stroke="#0E6BA8" strokeWidth="0.5" strokeOpacity="0.12" />
+              <path d="M 45 0 L 0 0 0 45" fill="none" stroke="#0E6BA8" strokeWidth="0.5" strokeOpacity="0.15" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#hero-grid)" />
         </svg>
       </div>
 
+      {/* 3. Hero Content (Selalu Jelas & Terbaca di Atas Video Latar Putih) */}
       <Container className="relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
           {/* Status Badge 24/7 */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0F7FD] border border-[#0E6BA8]/20 text-[#0E6BA8] text-xs font-semibold mb-6 shadow-2xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0E6BA8]/30 text-[#0E6BA8] text-xs font-semibold mb-6 shadow-sm backdrop-blur-xs">
             <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-            <span>Layanan Teknik & Penanganan Darurat 24 Jam / 7 Hari</span>
+            <span>Layanan Teknik &amp; Penanganan Darurat 24 Jam / 7 Hari</span>
           </div>
 
           {/* Heading Utama */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F2942] tracking-tight leading-[1.15] mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0F2942] tracking-tight leading-[1.15] mb-6 drop-shadow-2xs">
             Penyedia Jasa Teknik Terpadu &amp; Otomasi Fasilitas Industri
           </h1>
 
           {/* Subtitle Deskriptif */}
-          <p className="text-base sm:text-lg md:text-xl text-[#475569] leading-relaxed max-w-3xl mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-[#334155] font-medium leading-relaxed max-w-3xl mb-8">
             Penanganan profesional kelistrikan &amp; panel kontrol, migrasi sistem PLC/HMI, alignment mekanikal presisi, pendingin HVAC VRF/Chiller, otomatisasi pompa, hingga pencahayaan khusus gedung dan rekreasi.
           </p>
 
@@ -46,7 +91,7 @@ export function HeroSection() {
               external
               variant="whatsapp"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto shadow-md"
             >
               <DynamicIcon name="MessageSquare" size={20} />
               <span>Konsultasi WhatsApp Fast Response</span>
@@ -56,7 +101,7 @@ export function HeroSection() {
               href="#layanan"
               variant="outline"
               size="lg"
-              className="w-full sm:w-auto"
+              className="w-full sm:w-auto bg-white/80 backdrop-blur-xs shadow-xs"
             >
               <DynamicIcon name="Wrench" size={20} />
               <span>Jelajahi 6 Divisi Layanan</span>
@@ -75,7 +120,7 @@ export function HeroSection() {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="flex flex-col items-center p-3 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs hover:border-[#0E6BA8]/40 transition-colors"
+                className="flex flex-col items-center p-3 rounded-xl bg-white/90 border border-[#E2E8F0] shadow-2xs hover:border-[#0E6BA8]/40 backdrop-blur-xs transition-all hover:-translate-y-0.5"
               >
                 <DynamicIcon name={item.icon} size={22} className="text-[#0E6BA8] mb-1.5" />
                 <span className="text-xs font-semibold text-[#0F2942] text-center leading-tight">
