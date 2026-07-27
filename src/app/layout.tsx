@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { FloatingWhatsapp } from '@/components/ui/FloatingWhatsapp';
+import { BackToTop } from '@/components/ui/BackToTop';
 import { companyInfo } from '@/data/company';
 
 const inter = Inter({
@@ -117,6 +119,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingWhatsapp />
+        <BackToTop />
       </body>
     </html>
   );
