@@ -450,8 +450,8 @@ export const brandItems: BrandItem[] = [
     name: 'Fenner',
     category: 'Sabuk & Transmisi',
     logoText: 'Fenner',
-    logoPath: '/logo/brands/fenner.png',
-    logoWidth: 110,
+    logoPath: '/logo/brands/fenner.svg',
+    logoWidth: 130,
     logoHeight: 48,
   },
   {
@@ -460,11 +460,27 @@ export const brandItems: BrandItem[] = [
     category: 'Rantai Transmisi',
     logoText: 'Renold',
     logoPath: '/logo/brands/renold.png',
-    logoWidth: 110,
+    logoWidth: 130,
     logoHeight: 48,
   },
-  { id: 'grundfos', name: 'Grundfos', category: 'Pompa & Perairan', logoText: 'Grundfos' },
-  { id: 'sta-rite', name: 'Sta-Rite', category: 'Pompa & Filtrasi', logoText: 'Sta-Rite' },
+  {
+    id: 'grundfos',
+    name: 'Grundfos',
+    category: 'Pompa & Perairan',
+    logoText: 'Grundfos',
+    logoPath: '/logo/brands/grundfos.svg',
+    logoWidth: 160,
+    logoHeight: 48,
+  },
+  {
+    id: 'sta-rite',
+    name: 'Sta-Rite',
+    category: 'Pompa & Filtrasi',
+    logoText: 'Sta-Rite',
+    logoPath: '/logo/brands/sta-rite.svg',
+    logoWidth: 150,
+    logoHeight: 48,
+  },
 ];
 
 export const brandDisclaimer = 
