@@ -15,15 +15,81 @@ export function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('/');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      if (pathname !== '/') return;
+
+      const sections = ['layanan', 'keahlian', 'cara-kerja', 'mengapa-cbl', 'kontak'];
+      
+      // If near top of page, active section is home '/'
+      if (window.scrollY < 200) {
+        setActiveSection('/');
+        return;
+      }
+
+      const scrollPosition = window.scrollY + 140;
+      let current = '/';
+
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            current = `#${id}`;
+            break;
+          }
+        }
+      }
+      setActiveSection(current);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
+
+  const checkIsActive = (itemHref: string) => {
+    if (pathname === '/') {
+      if (itemHref === '/') {
+        return activeSection === '/';
+      }
+      if (itemHref.startsWith('#')) {
+        return activeSection === itemHref;
+      }
+      return pathname === itemHref;
+    }
+    return pathname === itemHref;
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, itemHref: string) => {
+    if (pathname === '/' && itemHref.startsWith('#')) {
+      e.preventDefault();
+      const sectionId = itemHref.substring(1);
+      const targetEl = document.getElementById(sectionId);
+      if (targetEl) {
+        const headerOffset = 80;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+        window.history.pushState(null, '', `/#${sectionId}`);
+        setActiveSection(itemHref);
+      }
+    } else if (pathname === '/' && itemHref === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.history.pushState(null, '', '/');
+      setActiveSection('/');
+    }
+  };
 
   return (
     <>
@@ -37,6 +103,7 @@ export function Header() {
           {/* Logo Perusahaan */}
           <Link
             href="/"
+            onClick={(e) => handleNavClick(e, '/')}
             className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-[#0E6BA8] rounded-lg"
           >
             <div className="relative w-10 h-10 shrink-0 group-hover:scale-105 transition-transform">
@@ -63,16 +130,17 @@ export function Header() {
           <nav className="hidden lg:flex items-center gap-1" aria-label="Navigasi Utama">
             {mainNavItems.map((item) => {
               const href = resolveSectionHref(item.href, pathname);
-              const isActive = pathname === item.href || (item.href === '/' && pathname === '/');
+              const isActive = checkIsActive(item.href);
 
               return (
                 <Link
                   key={item.label}
                   href={href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className={cn(
-                    'px-3.5 py-2 text-sm font-medium rounded-lg transition-colors',
+                    'px-3.5 py-2 text-sm font-medium rounded-lg transition-all duration-150',
                     isActive
-                      ? 'text-[#0E6BA8] bg-[#F0F7FD] font-semibold'
+                      ? 'text-[#0E6BA8] bg-[#F0F7FD] font-bold shadow-2xs'
                       : 'text-[#0F172A] hover:text-[#0E6BA8] hover:bg-[#F8FAFC]'
                   )}
                 >
@@ -116,6 +184,8 @@ export function Header() {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         pathname={pathname}
+        activeSection={activeSection}
+        handleNavClick={handleNavClick}
       />
     </>
   );

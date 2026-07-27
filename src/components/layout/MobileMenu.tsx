@@ -12,9 +12,17 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   pathname: string;
+  activeSection?: string;
+  handleNavClick?: (e: React.MouseEvent<HTMLAnchorElement>, itemHref: string) => void;
 }
 
-export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
+export function MobileMenu({
+  isOpen,
+  onClose,
+  pathname,
+  activeSection = '/',
+  handleNavClick,
+}: MobileMenuProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   // Focus trap & Escape key listener
@@ -65,6 +73,19 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
+
+  const checkIsActive = (itemHref: string) => {
+    if (pathname === '/') {
+      if (itemHref === '/') {
+        return activeSection === '/';
+      }
+      if (itemHref.startsWith('#')) {
+        return activeSection === itemHref;
+      }
+      return pathname === itemHref;
+    }
+    return pathname === itemHref;
+  };
 
   return (
     <div
@@ -117,17 +138,22 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
           <nav className="py-6 flex flex-col gap-1" aria-label="Navigasi Seluler">
             {mainNavItems.map((item) => {
               const href = resolveSectionHref(item.href, pathname);
-              const isActive = pathname === item.href;
+              const isActive = checkIsActive(item.href);
 
               return (
                 <Link
                   key={item.label}
                   href={href}
-                  onClick={onClose}
+                  onClick={(e) => {
+                    if (handleNavClick) {
+                      handleNavClick(e, item.href);
+                    }
+                    onClose();
+                  }}
                   className={cn(
                     'px-4 py-3 text-base font-semibold rounded-xl transition-colors flex items-center justify-between',
                     isActive
-                      ? 'text-[#0E6BA8] bg-[#F0F7FD]'
+                      ? 'text-[#0E6BA8] bg-[#F0F7FD] font-bold'
                       : 'text-[#0F172A] hover:bg-[#F8FAFC] hover:text-[#0E6BA8]'
                   )}
                 >
@@ -142,7 +168,7 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
         {/* Menu Footer CTA */}
         <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
           <div className="text-xs text-[#475569] font-medium">
-            Layanan Darurat & Konsultasi 24/7:
+            Layanan Darurat &amp; Konsultasi 24/7:
           </div>
           <Button
             href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
