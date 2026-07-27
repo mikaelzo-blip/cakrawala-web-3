@@ -1,38 +1,12 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { brandItems, brandDisclaimer } from '@/data/company';
 
 export function BrandSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Optional performance & battery saver: pause animation when out of viewport
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el || typeof IntersectionObserver === 'undefined') return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            el.style.animationPlayState = 'running';
-          } else {
-            el.style.animationPlayState = 'paused';
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="py-16 md:py-20 bg-white border-b border-[#E2E8F0] overflow-hidden">
-      {/* 1. Section Heading (Di dalam Container, Poin 7: "berbagai manufaktur komponen industri") */}
+      {/* 1. Section Heading (Di dalam Container) */}
       <Container>
         <SectionHeading
           badge="Cakupan Komponen &amp; Suku Cadang"
@@ -43,11 +17,7 @@ export function BrandSection() {
 
       {/* 2. Full-Bleed Running Marquee Track (Di Luar Container, Edge-to-Edge) */}
       <div className="w-full overflow-hidden marquee-mask py-4 mb-8">
-        <div
-          ref={containerRef}
-          className="flex flex-nowrap w-max animate-marquee-track hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:flex-wrap motion-reduce:w-full motion-reduce:justify-center motion-reduce:transform-none motion-reduce:animate-none"
-          style={{ '--marquee-duration': '70s' } as React.CSSProperties}
-        >
+        <div className="animate-marquee-track motion-reduce:flex-wrap motion-reduce:w-full motion-reduce:justify-center">
           {/* Copy 1: Set Pertama (Aman untuk Screen Reader) */}
           <div className="flex flex-nowrap shrink-0 motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:w-full">
             {brandItems.map((brand) => (
@@ -80,7 +50,7 @@ export function BrandSection() {
             ))}
           </div>
 
-          {/* Copy 2: Duplikasi Pertama (-50% seam) */}
+          {/* Copy 2: Duplikasi Pertama untuk Seamless Loop (-50% seam) */}
           <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
@@ -172,7 +142,7 @@ export function BrandSection() {
         </div>
       </div>
 
-      {/* 3. Disclaimer Merek Dagang & Kerja Sama (Poin 7: Heading & Text Wajib) */}
+      {/* 3. Disclaimer Merek Dagang & Kerja Sama */}
       <Container>
         <div className="p-4 sm:p-5 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20 text-xs text-[#475569] leading-relaxed">
           <p>

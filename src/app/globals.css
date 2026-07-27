@@ -81,25 +81,26 @@
 }
 
 .animate-marquee-track {
-  animation: marquee-scroll var(--marquee-duration, 70s) linear infinite;
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite !important;
+  will-change: transform;
+}
+
+.animate-marquee-track:hover,
+.animate-marquee-track:focus-within {
+  animation-play-state: paused !important;
 }
 
 .marquee-mask {
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
 }
 
 /* Respect user preference for reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 
   .card-hover-lift:hover {
@@ -109,6 +110,9 @@
   .animate-marquee-track {
     animation: none !important;
     transform: none !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
   }
 
   .marquee-mask {
