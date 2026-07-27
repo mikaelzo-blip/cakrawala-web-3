@@ -15,7 +15,7 @@ export function BrandSection() {
         />
       </Container>
 
-      {/* 2. Full-Bleed Running Marquee Track dengan Ukuran Logo Lebih Besar */}
+      {/* 2. Full-Bleed Running Marquee Track dengan Warna Logo Asli */}
       <div className="w-full overflow-hidden marquee-mask py-6 mb-8">
         <div className="animate-marquee-track">
           {/* Copy 1: Set Utama */}
@@ -23,9 +23,9 @@ export function BrandSection() {
             {brandItems.map((brand) => (
               <div
                 key={`b1-${brand.id}`}
-                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm mr-6 shrink-0 text-center select-none opacity-85 hover:opacity-100 transition-opacity card-hover-lift"
+                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-90 hover:opacity-100 transition-all duration-300 card-hover-lift group"
               >
-                {/* Box Logo Besar (Max 170px x 52px) */}
+                {/* Box Logo Besar (Max 170px x 52px) dengan Warna Asli (Tanpa Grayscale) */}
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
                     <img
@@ -33,7 +33,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
-                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125 hover:grayscale-0 transition-all duration-300"
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
                     <span className="font-black text-xl sm:text-2xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
@@ -55,7 +55,7 @@ export function BrandSection() {
             {brandItems.map((brand) => (
               <div
                 key={`b2-${brand.id}`}
-                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm mr-6 shrink-0 text-center select-none opacity-85 hover:opacity-100 transition-opacity card-hover-lift"
+                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-90 hover:opacity-100 transition-all duration-300 card-hover-lift group"
               >
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
@@ -64,7 +64,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
-                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125 hover:grayscale-0 transition-all duration-300"
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
                     <span className="font-black text-xl sm:text-2xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
@@ -85,7 +85,7 @@ export function BrandSection() {
             {brandItems.map((brand) => (
               <div
                 key={`b3-${brand.id}`}
-                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm mr-6 shrink-0 text-center select-none opacity-85 hover:opacity-100 transition-opacity card-hover-lift"
+                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-90 hover:opacity-100 transition-all duration-300 card-hover-lift group"
               >
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
@@ -94,7 +94,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
-                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125 hover:grayscale-0 transition-all duration-300"
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
                     <span className="font-black text-xl sm:text-2xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
@@ -115,7 +115,7 @@ export function BrandSection() {
             {brandItems.map((brand) => (
               <div
                 key={`b4-${brand.id}`}
-                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm mr-6 shrink-0 text-center select-none opacity-85 hover:opacity-100 transition-opacity card-hover-lift"
+                className="inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-90 hover:opacity-100 transition-all duration-300 card-hover-lift group"
               >
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
@@ -124,7 +124,7 @@ export function BrandSection() {
                       alt={brand.name}
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
-                      className="max-w-full max-h-full object-contain filter grayscale brightness-90 contrast-125 hover:grayscale-0 transition-all duration-300"
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (
                     <span className="font-black text-xl sm:text-2xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
