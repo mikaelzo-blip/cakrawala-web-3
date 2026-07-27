@@ -4,7 +4,7 @@
  * ============================================================================
  * STATUS: DRAF DOKUMENTASI TEKNIS INTERNAL
  * 
- * ATURAN KERAHASIAAN & VERIFIKASI (STRIKT PATUHI SPEC.md §7):
+ * ATURAN KERAHASIAAN & VERIFIKASI (STRIKT PATUHI SPEC.md §8):
  * 1. Seluruh entri studi kasus di bawah ini WAJIB dicocokkan terlebih dahulu dengan
  *    Surat Pesanan (PO) / Berita Acara Serah Terima (BAST) fisik sebelum publikasi go-live.
  * 2. HAPUS atau DRAFTKAN entri yang tidak memiliki bukti fisik pekerjaan di lapangan.
@@ -58,8 +58,8 @@ export const projects: Project[] = [
       'Pilot Lamp & Push Button Industrial',
     ],
     icon: 'Zap',
-    image: '/images/projects/panel-mccb.jpg',
-    imageAlt: 'Visual ilustrasi perakitan panel kelistrikan industri dan breaker MCCB',
+    image: '/images/projects/panel-kontrol-mccb-distribusi/panel-distribusi-utama-01.webp',
+    imageAlt: 'Panel distribusi utama dengan penataan busbar dan terminal kabel presisi',
     featured: true,
   },
   {
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     phases: [
       {
         title: 'Backup Logika Program & Konversi Kode',
-        description: 'Pengekstrakan logika ladder lama dan translasi alur perintah ke arsitektur perangkat lunak PLC terbarukan.',
+        description: 'Penekstrakan logika ladder lama dan translasi alur perintah ke arsitektur perangkat lunak PLC terbarukan.',
       },
       {
         title: 'Penggantian Pengendali & Pengkabelan I/O',
@@ -102,8 +102,8 @@ export const projects: Project[] = [
       'Power Supply Industrial 24VDC',
     ],
     icon: 'Cpu',
-    image: '/images/projects/plc-hmi.jpg',
-    imageAlt: 'Visual ilustrasi modul kontrol PLC dan antarmuka HMI otomasi industri',
+    image: '/images/projects/migrasi-plc-hmi-otomasi/migrasi-plc-hmi-01.webp',
+    imageAlt: 'Layar antarmuka HMI dan modul kontrol otomatisasi industri',
     featured: true,
   },
   {
@@ -146,8 +146,8 @@ export const projects: Project[] = [
       'Laser Alignment System Meter',
     ],
     icon: 'Wrench',
-    image: '/images/projects/laser-alignment.jpg',
-    imageAlt: 'Visual ilustrasi pengerjaan alignment presisi pada poros penggerak mekanikal',
+    image: '/images/projects/alignment-gearbox-bearing-presisi/alignment-bearing-presisi-01.webp',
+    imageAlt: 'Pengukuran alignment dan perawatan komponen transmisi daya presisi',
     featured: true,
   },
   {
