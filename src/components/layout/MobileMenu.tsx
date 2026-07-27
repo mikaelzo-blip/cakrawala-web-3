@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { companyInfo, mainNavItems } from '@/data/company';
 import { resolveSectionHref, cn } from '@/lib/utils';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
@@ -89,8 +90,14 @@ export function MobileMenu({ isOpen, onClose, pathname }: MobileMenuProps) {
           {/* Menu Header */}
           <div className="flex items-center justify-between pb-6 border-b border-[#E2E8F0]">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-[#0F2942] text-white flex items-center justify-center font-bold text-sm">
-                CBL
+              <div className="relative w-8 h-8 shrink-0">
+                <Image
+                  src="/logo/cbl-logo.png"
+                  alt="Logo CV Cakrawala Buana Lestari"
+                  width={32}
+                  height={32}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="font-bold text-[#0F2942] text-sm">
                 CV Cakrawala Buana Lestari

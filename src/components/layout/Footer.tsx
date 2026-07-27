@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { companyInfo, mainNavItems, serviceDivisions, brandDisclaimer } from '@/data/company';
 import { resolveSectionHref } from '@/lib/utils';
 import { Container } from '@/components/ui/Container';
@@ -19,8 +20,14 @@ export function Footer() {
           {/* Kolom 1: Perusahaan */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#0E6BA8] text-white flex items-center justify-center font-black text-lg shadow-sm">
-                CBL
+              <div className="relative w-10 h-10 shrink-0">
+                <Image
+                  src="/logo/cbl-logo.png"
+                  alt="Logo CV Cakrawala Buana Lestari"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="font-extrabold text-lg text-white tracking-tight">
                 {companyInfo.legalName}

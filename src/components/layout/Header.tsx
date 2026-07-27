@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 import { companyInfo, mainNavItems } from '@/data/company';
 import { resolveSectionHref, cn } from '@/lib/utils';
 import { Container } from '@/components/ui/Container';
@@ -38,15 +39,22 @@ export function Header() {
             href="/"
             className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-[#0E6BA8] rounded-lg"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0F2942] to-[#15426B] text-white flex items-center justify-center font-black text-lg shadow-sm group-hover:scale-105 transition-transform">
-              CBL
+            <div className="relative w-10 h-10 shrink-0 group-hover:scale-105 transition-transform">
+              <Image
+                src="/logo/cbl-logo.png"
+                alt="Logo CV Cakrawala Buana Lestari"
+                width={40}
+                height={40}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-extrabold text-[#0F2942] tracking-tight text-base sm:text-lg leading-none">
                 {companyInfo.legalName}
               </span>
               <span className="text-xs text-[#475569] font-medium tracking-wide mt-1">
-                Jasa Teknik & Otomasi Terpadu
+                Jasa Teknik &amp; Otomasi Terpadu
               </span>
             </div>
           </Link>
