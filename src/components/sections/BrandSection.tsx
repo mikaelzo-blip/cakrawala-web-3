@@ -32,12 +32,12 @@ export function BrandSection() {
 
   return (
     <section className="py-16 md:py-20 bg-white border-b border-[#E2E8F0] overflow-hidden">
-      {/* 1. Section Heading (Di dalam Container) */}
+      {/* 1. Section Heading (Di dalam Container, Poin 7: "berbagai manufaktur komponen industri") */}
       <Container>
         <SectionHeading
           badge="Cakupan Komponen &amp; Suku Cadang"
           title="Merek Industri yang Biasa Ditangani"
-          description="Tim teknis kami terbiasa melakukan penanganan, instalasi, dan perbaikan komponen dari berbagai manufaktur terkemuka."
+          description="Tim teknis kami terbiasa melakukan penanganan, instalasi, dan perbaikan komponen dari berbagai manufaktur komponen industri."
         />
       </Container>
 
@@ -48,68 +48,122 @@ export function BrandSection() {
           className="flex flex-nowrap w-max animate-marquee-track hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:flex-wrap motion-reduce:w-full motion-reduce:justify-center motion-reduce:transform-none motion-reduce:animate-none"
           style={{ '--marquee-duration': '70s' } as React.CSSProperties}
         >
-          {/* Copy 1: Set Pertama (Aman untuk Layar Pembaca / Screen Reader) */}
+          {/* Copy 1: Set Pertama (Aman untuk Screen Reader) */}
           <div className="flex flex-nowrap shrink-0 motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:w-full">
             {brandItems.map((brand) => (
               <div
                 key={`b1-${brand.id}`}
-                className="inline-flex flex-col items-center justify-center w-[150px] sm:w-[170px] h-[80px] px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] mr-6 shrink-0 text-center select-none opacity-65 hover:opacity-100 transition-opacity motion-reduce:mr-3 motion-reduce:mb-3"
+                className="inline-flex flex-col items-center justify-between w-[200px] h-[112px] p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-70 hover:opacity-100 transition-opacity card-hover-lift motion-reduce:mr-3 motion-reduce:mb-3"
               >
-                <span className="font-black text-base sm:text-lg text-[#15426B] tracking-tight truncate max-w-full">
-                  {brand.logoText}
-                </span>
-                <span className="text-[11px] text-[#475569] font-semibold mt-0.5 truncate max-w-full">
+                {/* Logo Box / Wordmark Box Presisi (Max 120px x 28px) */}
+                <div className="w-[120px] h-[28px] flex items-center justify-center overflow-hidden">
+                  {brand.logoPath ? (
+                    <img
+                      src={brand.logoPath}
+                      alt={brand.name}
+                      width={brand.logoWidth || 120}
+                      height={brand.logoHeight || 28}
+                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                    />
+                  ) : (
+                    <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
+                      {brand.logoText}
+                    </span>
+                  )}
+                </div>
+
+                {/* Category Sublabel (Warna #475569) */}
+                <span className="text-xs text-[#475569] font-medium truncate max-w-full">
                   {brand.category}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Copy 2: Duplikasi Pertama untuk Seamless Loop (-50% seam) */}
+          {/* Copy 2: Duplikasi Pertama (-50% seam) */}
           <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
                 key={`b2-${brand.id}`}
-                className="inline-flex flex-col items-center justify-center w-[150px] sm:w-[170px] h-[80px] px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] mr-6 shrink-0 text-center select-none opacity-65 hover:opacity-100 transition-opacity"
+                className="inline-flex flex-col items-center justify-between w-[200px] h-[112px] p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-70 hover:opacity-100 transition-opacity card-hover-lift"
               >
-                <span className="font-black text-base sm:text-lg text-[#15426B] tracking-tight truncate max-w-full">
-                  {brand.logoText}
-                </span>
-                <span className="text-[11px] text-[#475569] font-semibold mt-0.5 truncate max-w-full">
+                <div className="w-[120px] h-[28px] flex items-center justify-center overflow-hidden">
+                  {brand.logoPath ? (
+                    <img
+                      src={brand.logoPath}
+                      alt={brand.name}
+                      width={brand.logoWidth || 120}
+                      height={brand.logoHeight || 28}
+                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                    />
+                  ) : (
+                    <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
+                      {brand.logoText}
+                    </span>
+                  )}
+                </div>
+
+                <span className="text-xs text-[#475569] font-medium truncate max-w-full">
                   {brand.category}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Copy 3: Duplikasi Kedua (Memastikan viewport 1440px+ selalu terisi penuh) */}
+          {/* Copy 3: Duplikasi Kedua (Pelengkap 1440px+) */}
           <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
                 key={`b3-${brand.id}`}
-                className="inline-flex flex-col items-center justify-center w-[150px] sm:w-[170px] h-[80px] px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] mr-6 shrink-0 text-center select-none opacity-65 hover:opacity-100 transition-opacity"
+                className="inline-flex flex-col items-center justify-between w-[200px] h-[112px] p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-70 hover:opacity-100 transition-opacity card-hover-lift"
               >
-                <span className="font-black text-base sm:text-lg text-[#15426B] tracking-tight truncate max-w-full">
-                  {brand.logoText}
-                </span>
-                <span className="text-[11px] text-[#475569] font-semibold mt-0.5 truncate max-w-full">
+                <div className="w-[120px] h-[28px] flex items-center justify-center overflow-hidden">
+                  {brand.logoPath ? (
+                    <img
+                      src={brand.logoPath}
+                      alt={brand.name}
+                      width={brand.logoWidth || 120}
+                      height={brand.logoHeight || 28}
+                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                    />
+                  ) : (
+                    <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
+                      {brand.logoText}
+                    </span>
+                  )}
+                </div>
+
+                <span className="text-xs text-[#475569] font-medium truncate max-w-full">
                   {brand.category}
                 </span>
               </div>
             ))}
           </div>
 
-          {/* Copy 4: Duplikasi Ketiga (Pelengkap Seam 4-Unit) */}
+          {/* Copy 4: Duplikasi Ketiga (Seam 4-Unit) */}
           <div className="flex flex-nowrap shrink-0 motion-reduce:hidden" aria-hidden="true">
             {brandItems.map((brand) => (
               <div
                 key={`b4-${brand.id}`}
-                className="inline-flex flex-col items-center justify-center w-[150px] sm:w-[170px] h-[80px] px-4 py-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] mr-6 shrink-0 text-center select-none opacity-65 hover:opacity-100 transition-opacity"
+                className="inline-flex flex-col items-center justify-between w-[200px] h-[112px] p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs mr-6 shrink-0 text-center select-none opacity-70 hover:opacity-100 transition-opacity card-hover-lift"
               >
-                <span className="font-black text-base sm:text-lg text-[#15426B] tracking-tight truncate max-w-full">
-                  {brand.logoText}
-                </span>
-                <span className="text-[11px] text-[#475569] font-semibold mt-0.5 truncate max-w-full">
+                <div className="w-[120px] h-[28px] flex items-center justify-center overflow-hidden">
+                  {brand.logoPath ? (
+                    <img
+                      src={brand.logoPath}
+                      alt={brand.name}
+                      width={brand.logoWidth || 120}
+                      height={brand.logoHeight || 28}
+                      className="max-w-full max-h-full object-contain grayscale filter brightness-90 contrast-125"
+                    />
+                  ) : (
+                    <span className="font-black text-lg sm:text-xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
+                      {brand.logoText}
+                    </span>
+                  )}
+                </div>
+
+                <span className="text-xs text-[#475569] font-medium truncate max-w-full">
                   {brand.category}
                 </span>
               </div>
@@ -118,11 +172,11 @@ export function BrandSection() {
         </div>
       </div>
 
-      {/* 3. Disclaimer Hak Cipta Merek (Di dalam Container, Selalu Tetap & Terbaca) */}
+      {/* 3. Disclaimer Merek Dagang & Kerja Sama (Poin 7: Heading & Text Wajib) */}
       <Container>
         <div className="p-4 sm:p-5 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20 text-xs text-[#475569] leading-relaxed">
           <p>
-            <strong className="text-[#0F2942] font-semibold">Pernyataan Batasan Hak Cipta &amp; Kerjasama:</strong> {brandDisclaimer}
+            <strong className="text-[#0F2942] font-semibold">Pernyataan Batasan Merek Dagang &amp; Kerja Sama:</strong> {brandDisclaimer}
           </p>
         </div>
       </Container>
