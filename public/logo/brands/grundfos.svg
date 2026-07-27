@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" fill="none">
+  <!-- Grundfos Symbol -->
+  <g transform="translate(8, 8)">
+    <rect x="0" y="4" width="34" height="36" rx="4" fill="#003366"/>
+    <circle cx="17" cy="22" r="10" fill="#FFFFFF"/>
+    <path d="M12 22 L22 15 L22 29 Z" fill="#003366"/>
+  </g>
+  <!-- Text GRUNDFOS -->
+  <text x="52" y="38" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="29" fill="#003366" letter-spacing="-0.5">GRUNDFOS</text>
+</svg>
