@@ -36,8 +36,8 @@ export const projects: Project[] = [
         description: 'Penggantian unit MCCB utama, pembersihan kontaktor daya, serta penataan ulang kabel sistem interlock otomatis.',
       },
       {
-        title: 'Pengujian Uji Beban & Simulas Trip',
-        description: 'Pengujian pengoperasian pengaman arus hubung singkat dan simulasi perpindahan sumber daya daya darurat.',
+        title: 'Pengujian Uji Beban & Simulasi Trip',
+        description: 'Pengujian pengoperasian pengaman arus hubung singkat dan simulasi perpindahan sumber daya darurat.',
       },
     ],
     results: [
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     components: [
       'Molded Case Circuit Breaker (MCCB)',
       'Digital Power Meter & Current Transformer',
-      'Busbar Tembaga Murni murni berinsulasi',
+      'Busbar Tembaga Murni berinsulasi',
       'Pilot Lamp & Push Button Industrial',
     ],
     icon: 'Zap',
@@ -288,7 +288,7 @@ export const projects: Project[] = [
     category: 'kelistrikan-panel',
     categoryLabel: 'Kelistrikan & Panel Kontrol',
     sector: 'Infrastruktur Komersial & Bangunan Gedung',
-    summary: 'Pemasangan modul Soft Starter dan penggerak frekuensi inverter untuk penanganan akselerasi berbertahap motor listrik daya besar.',
+    summary: 'Pemasangan modul Soft Starter dan penggerak frekuensi inverter untuk penanganan akselerasi bertahap motor listrik daya besar.',
     challenge: 'Pengoperasian awal motor induksi pompa dan blower menggunakan metoda Direct-On-Line (DOL) menimbulkan kejutan lonjakan arus hingga 6 kali lipat dari arus nominal.',
     phases: [
       {
@@ -338,7 +338,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Integrasi Sinyal ke Relay Kontrol Interlock',
-        description: 'Pengkabelan sinyal pemutus otomatis apabila ambang batas batas suhu batas kerja terlampaui.',
+        description: 'Pengkabelan sinyal pemutus otomatis apabila ambang batas suhu kerja terlampaui.',
       },
     ],
     results: [
@@ -348,7 +348,7 @@ export const projects: Project[] = [
     scope: [
       'Pemasangan sensor suhu PT100 RTD',
       'Integrasi Temperature Transmitter 4-20mA',
-      'Testing simulasi respon batas trip batas suhu',
+      'Testing simulasi respon batas trip suhu',
     ],
     components: [
       'PT100 Temperature Sensor Element',
@@ -356,7 +356,7 @@ export const projects: Project[] = [
     ],
     icon: 'Cpu',
     image: '/images/projects/sensor-integration.jpg',
-    imageAlt: 'Visual integrasi sensor temperatur dan instrumen otomasis proteksi',
+    imageAlt: 'Visual integrasi sensor temperatur dan instrumen otomatisasi proteksi',
     featured: false,
   },
   {
